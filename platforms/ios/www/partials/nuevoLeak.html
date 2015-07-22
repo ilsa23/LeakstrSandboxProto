@@ -1,0 +1,188 @@
+<div class="generic-window-container">
+	<div class="header">
+		<div class="left-zone" ng-click="$state.go('leaks')">
+			<i class="ion-ios-arrow-left"></i>
+		</div>
+		<div class="center-zone">
+			<span class="centerContent">Nuevo Leak</span>
+		</div>
+		<div class="right-zone">
+			<!--<i class="ion-ios-checkmark-empty" style="color:#4eb96f"></i>-->
+		</div>
+	</div>
+	<div class="the-photo-container">
+		<!--<img id="thePicContainer" class="the-pic">-->
+		<canvas id="canvas" width="375" height="500"></canvas>
+		<div class="the-camera-icon" ng-click="takePic()">
+			<i class="camera ion-camera"></i>
+		</div>
+		<div class="photo-description">
+			<span ng-click="addName()" class="big-text">{{nuevoLeak.name}}</span>
+			<p ng-click="addBody()" style="margin-top:3em;">{{nuevoLeak.body}}</p>
+			<!--<input type="range" min="0" max="100" ng-model="theBlurSlider" />-->
+		</div>
+	</div>
+	<div class="leak-details">
+		<div ng-click="addName()" class="leak-detail">
+			<div class="left-zone">
+				{{nuevoLeak.name}}
+			</div>
+			<div class="right-zone">
+				<i class="ion-android-more-horizontal"></i>
+			</div>
+		</div>
+		<div ng-click="addBody()" class="leak-detail">
+			<div class="left-zone">
+				{{nuevoLeak.body}}
+			</div>
+			<div class="right-zone">
+				<i class="ion-android-more-horizontal"></i>
+			</div>
+		</div>
+		<div ng-click="addFecha()" class="leak-detail">
+			<div class="left-zone" ng-click="miDatePicker()">
+				Fecha: {{nuevoLeak.date | date:'MM/dd/yyyy @ h:mma'}}
+			</div>
+			<div class="right-zone">
+				<i class="ion-android-more-horizontal"></i>
+			</div>
+		</div>	
+		<div ng-click="createLeak()" class="leak-confirm">
+			<i class="ion-ios-checkmark-empty" style="color:#4eb96f"></i>
+		</div>
+	</div>
+</div>
+<style type="text/css">
+	#canvas{
+		position: absolute;
+		margin: auto;
+		z-index: 0;
+		left: 0;
+		top: 0;
+		max-height: 500px;
+	}
+	.the-pic{
+		position: absolute;
+		width: 100%;
+		height: auto;
+		position: absolute;
+		width: 100%;
+		height: auto;
+		z-index: 0;
+		left: 0;
+		top: 0;		
+	}
+	.blur-in{
+	    -webkit-animation: blurin 2s forwards; /* Safari, Chrome and Opera > 12.1 */
+	       -moz-animation: blurin 2s forwards; /* Firefox < 16 */
+	        -ms-animation: blurin 2s forwards; /* Internet Explorer */
+	         -o-animation: blurin 2s forwards; /* Opera < 12.1 */
+	            animation: blurin 2s forwards;
+	            -webkit-animation-delay: 2s;
+	}
+	@keyframes blurin {
+	    from { opacity: 0; }
+	    to   { opacity: 1; }
+	}
+	.leak-details{
+		background-color: white;
+		z-index: 100;
+		position: relative;
+		/*padding-bottom: 50px;*/
+	}
+	.leak-confirm{
+		height: 50px;
+		text-align: center;
+		font-size: 3em;
+	}
+	.leak-detail{
+		padding: 1em;
+		height: 50px;
+		background-color: white;
+		position: relative;
+		border-width: 0px 0 1px 0;
+		border-style: solid;
+		border-color: black;
+	}
+	.leak-detail .right-zone{
+		font-size: 2.5em;
+	}
+	
+	.photo-description{
+		margin-top: 2.5em;
+		z-index: 1;
+		position: relative;
+	}
+	.big-text{
+		font-size: 2em;
+		font-weight: 700;
+	}
+	.the-camera-icon {
+		width: 100%;
+		font-size: 5.5em;
+		opacity: .5;
+		padding-top: 40px;
+		z-index: 1;
+		position: relative;
+	}
+	.the-camera-icon .camera{
+
+	}
+	.the-photo-container{
+		position: relative;
+		height: 350px;
+		color: white;
+		text-align: center;
+	}
+	.header{
+		position: relative;
+		min-height:50px;
+		border-bottom-color: white;
+		border-bottom-style: none;
+		border-bottom-width: 1px;
+		color: white;
+	}
+	.header .left-zone, .header .right-zone{
+		font-size: 2em;
+	}
+
+	.left-zone{
+		position: absolute;
+		top: 50%;
+		left: 0%;
+		-webkit-transform: translate3d(.5em,-50%,0);
+	}
+	.right-zone{
+		position: absolute;
+		top: 50%;
+		right: 0%;
+		-webkit-transform: translate3d(-50%,-50%,0);
+	}
+	.center-zone{
+		position: absolute;
+		font-size: 1.4em;
+		top: 50%;
+		left: 50%;
+		text-align: center;
+		-webkit-transform: translate3d(-50%,-50%,0);
+	}
+	.list-item{
+		background-color:white;
+		height: 50px;
+		border-width:1px 0 1px 0;
+		border-style: solid;
+	}
+	.redes-sociales{
+		height: 50px;
+	}
+	.user-thumbnail{
+		-webkit-border-radius: 20px;
+		height: 40px;
+	}
+	.total-center{
+		position: relative;
+		top: 50%;
+		left: 50%;
+		-webkit-transform: translate3d(-50%,-50%,0);
+	}
+</style>

@@ -1,0 +1,84 @@
+<div class="generic-window-container">
+	<div class="header">
+		<div class="left-zone" ng-click="$state.go('leaks')">
+			<i class="ion-ios-arrow-left"></i>
+		</div>
+		<div class="center-zone">
+			<span class="centerContent">Buscar Amigos</span>
+		</div>
+		<div class="right-zone">
+			<!--<i class="ion-ios-search"></i>-->
+		</div>
+	</div>
+	<div class="content">
+		<!--<div class="redes-sociales"></div>-->
+		<div>
+			<input type="search" placeholder="Username" ng-model="searchFriend" class="ng-pristine ng-untouched ng-valid" style="width: 100%;height: 50px;border: none;margin-bottom: 1em;">
+		</div>
+		<div class="amigos">
+			<div class="row" style="margin:0" ng-repeat="found in foundUsers | filter:searchFriend">
+				<div class="col-xs-3 list-item">
+					<!--https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xap1/v/t1.0-1/p100x100/10393970_10153137708408454_7020134085747883602_n.jpg?oh=0652e8b280071dbfa4d3114af37dd888&oe=55C579C9&__gda__=1439949084_1a38f174ccb84112c90b769c0a5f2f9c-->
+					<img class="total-center user-thumbnail" src="">
+				</div>
+				<div class="col-xs-6 list-item">
+					<p class="total-center" style="font-size:1.3em;">{{found.username}}</p>
+				</div>
+				<div class="col-xs-3 list-item" style="font-size:1.3em;" ng-click="followUser(found.id)">
+					<p class="total-center" style="text-align:center;color:#4eb96f;font-size:1.5em;"><i class="ion-android-add-circle"></i></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<style type="text/css">
+	.header{
+		position: relative;
+		min-height:50px;
+		border-bottom-color: white;
+		border-bottom-style: solid;
+		border-bottom-width: 1px;
+		color: white;
+	}
+	.left-zone{
+		position: absolute;
+		top: 50%;
+		left: 0%;
+		-webkit-transform: translate3d(.5em,-50%,0);
+		font-size: 2em;
+	}
+	.right-zone{
+		position: absolute;
+		top: 50%;
+		right: 0%;
+		-webkit-transform: translate3d(-50%,-50%,0);
+		font-size: 2em;
+	}
+	.center-zone{
+		position: absolute;
+		font-size: 1.4em;
+		top: 50%;
+		left: 50%;
+		text-align: center;
+		-webkit-transform: translate3d(-50%,-50%,0);
+	}
+	.list-item{
+		background-color:white;
+		height: 50px;
+		border-width:1px 0 1px 0;
+		border-style: solid;
+	}
+	.redes-sociales{
+		height: 50px;
+	}
+	.user-thumbnail{
+		-webkit-border-radius: 20px;
+		height: 40px;
+	}
+	.total-center{
+		position: relative;
+		top: 50%;
+		left: 50%;
+		-webkit-transform: translate3d(-50%,-50%,0);
+	}
+</style>

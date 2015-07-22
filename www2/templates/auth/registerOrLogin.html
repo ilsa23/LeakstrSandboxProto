@@ -1,0 +1,32 @@
+<ons-page>
+  <div style="padding:2em"><img style="width: 100%;height:auto;position:relative;" src="img/leakstrLogo.svg"></div>
+  <p style="
+    text-align: center;
+    top: 75px;
+    position: relative;">Lekea tus desmadres...</p>
+  <form name="registerForm" class="login-form" novalidate>
+    <ons-button modifier="large" class="login-button" ng-click="app.mainnavi.pushPage('templates/auth/login.html')">Login</ons-button>
+    <br>
+    <ons-button modifier="large" class="login-button" ng-click="app.mainnavi.pushPage('templates/auth/register.html')">Registrar</ons-button>
+  </form>
+  <style>
+    .login-form {
+      position: relative;
+      top: 100px;
+      text-align: center;
+      width: 80%;
+      margin: 60px auto 0;
+    }
+
+    .login-button {
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .forgot-password {
+      display: block;
+      margin: 8px auto 0 auto;
+      font-size: 14px;
+    }  
+  </style>      
+</ons-page>

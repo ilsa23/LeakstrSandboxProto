@@ -1,0 +1,140 @@
+<div class="generic-window-container">
+	<div class="header">
+		<div class="left-zone">
+			<i class="ion-ios-arrow-left"></i>
+		</div>
+		<div class="center-zone">
+			<span class="centerContent">Nuevo Leak</span>
+		</div>
+		<div class="right-zone">
+			<i class="ion-ios-checkmark-empty" style="color:#4eb96f"></i>
+		</div>
+	</div>
+	<div class="the-photo-container">
+		<div class="the-camera-icon">
+			<i class="camera ion-camera"></i>
+		</div>
+		<div class="photo-description">
+			<span class="big-text">Título</span>
+			<p style="margin-top:3em;">Descripción</p>
+		</div>
+	</div>
+	<div class="leak-details">
+		<div class="leak-detail">
+			<div class="left-zone">
+				Título
+			</div>
+			<div class="right-zone">
+				<i class="ion-ios-checkmark-empty" style="color:#4eb96f"></i>
+			</div>
+		</div>
+		<div class="leak-detail">
+			<div class="left-zone">
+				Contenido
+			</div>
+			<div class="right-zone">
+				<i class="ion-android-more-horizontal"></i>
+			</div>
+		</div>
+		<div class="leak-detail">
+			<div class="left-zone">
+				Fecha del leak
+			</div>
+			<div class="right-zone">
+				<i class="ion-android-more-horizontal"></i>
+			</div>
+		</div>	
+	</div>
+</div>
+<style type="text/css">
+	.leak-details{
+		background-color: white;
+		padding-bottom: 50px;
+	}
+	.leak-detail{
+		padding: 1em;
+		height: 50px;
+		background-color: white;
+		position: relative;
+		border-width: 0px 0 1px 0;
+		border-style: solid;
+		border-color: black;
+	}
+	.leak-detail .right-zone{
+		font-size: 2.5em;
+	}
+	
+	.photo-description{
+		margin-top: 2.5em;
+	}
+	.big-text{
+		font-size: 2em;
+		font-weight: 700;
+	}
+	.the-camera-icon {
+		width: 100%;
+		font-size: 5.5em;
+		opacity: .5;
+		padding-top: 20px;
+	}
+	.the-camera-icon .camera{
+
+	}
+	.the-photo-container{
+		position: relative;
+		height: 350px;
+		color: white;
+		text-align: center;
+	}
+	.header{
+		position: relative;
+		min-height:50px;
+		border-bottom-color: white;
+		border-bottom-style: none;
+		border-bottom-width: 1px;
+		color: white;
+	}
+	.header .left-zone, .header .right-zone{
+		font-size: 2em;
+	}
+
+	.left-zone{
+		position: absolute;
+		top: 50%;
+		left: 0%;
+		-webkit-transform: translate3d(.5em,-50%,0);
+	}
+	.right-zone{
+		position: absolute;
+		top: 50%;
+		right: 0%;
+		-webkit-transform: translate3d(-50%,-50%,0);
+	}
+	.center-zone{
+		position: absolute;
+		font-size: 1.4em;
+		top: 50%;
+		left: 50%;
+		text-align: center;
+		-webkit-transform: translate3d(-50%,-50%,0);
+	}
+	.list-item{
+		background-color:white;
+		height: 50px;
+		border-width:1px 0 1px 0;
+		border-style: solid;
+	}
+	.redes-sociales{
+		height: 50px;
+	}
+	.user-thumbnail{
+		-webkit-border-radius: 20px;
+		height: 40px;
+	}
+	.total-center{
+		position: relative;
+		top: 50%;
+		left: 50%;
+		-webkit-transform: translate3d(-50%,-50%,0);
+	}
+</style>

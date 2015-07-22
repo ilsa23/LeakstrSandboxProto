@@ -1,0 +1,74 @@
+<div class="login-o-crea">
+	<div style="position:relative;z-index:1;">
+		<img src="img/leakstrLogo.svg">
+	</div>
+	<div class="subtitulo">
+		Leakea tus desmadres...
+	</div>
+	<div class="button-container">
+		<div class="center-button" ng-click="$state.go('registro')">
+			Crear Cuenta
+		</div>
+		<div class="center-button" ng-click="$state.go('login')">
+			Ingresa
+		</div>
+		<div class="center-button" ng-click="clickOnFacebook()">
+			<i class="fa fa-facebook social-logo" style="color:#3e60b0;"></i>
+		</div>
+		<div class="center-button" ng-click="clickOnTwitter()">
+			<i class="fa fa-twitter social-logo" style="color:#3e8cb0;"></i>
+		</div>
+	</div>
+</div>
+
+<style type="text/css">
+	.redes{
+		text-align: center;
+	    background-color: white;
+	    -webkit-border-radius: 100px;
+	    padding: 0 22px 0 22px;
+	    text-align: center;		
+	}
+	.social-logo{
+		margin:auto;
+		font-size: 1.5em;
+	}
+	.login-o-crea{
+		min-width: 100%;
+		min-height: 100%;
+		padding: 2em;
+		display: block;
+		position: relative;
+	}
+	.login-o-crea::after{
+		content: "";
+		background: url('img/cliche.png') no-repeat center center fixed; 
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+		background-position-x:-420px;
+		opacity: 0.8;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		position: absolute;
+		z-index: -1;
+	}
+	.login-o-crea .subtitulo{
+		color: white;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		-webkit-transform: translate3d(-50%,-50%,0);
+	}
+	.button-container{
+		position: absolute;
+		top: 70%;
+		left: 50%;
+		width: 100%;
+		-webkit-transform: translate3d(-50%,-50%,0);
+		padding: 4em;
+	}
+</style>

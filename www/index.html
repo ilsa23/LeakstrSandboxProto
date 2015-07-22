@@ -1,0 +1,125 @@
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="bower_components/ionicons/css/ionicons.min.css">
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700" rel="stylesheet" type="text/css">
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <style>
+    *{
+      font-family: 'Open Sans'
+    }
+    body{
+      background-image: url('img/blur.jpg');
+      background-size:cover;
+    }
+    .generic-window-container{
+      background-image: url('img/blur.jpg');
+      background-size:cover;
+      height: 100%;
+      padding-top: 20px;
+    }   
+    .center-button{
+      background-color: #4eb96f;
+      color: white;
+      -webkit-border-radius:22px;
+      padding: 1em;
+      text-align: center;
+      margin: 1em;
+    } 
+    .animate-if {
+      background-color:black;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1000;
+      opacity:.5;
+    }
+
+    .animate-if.ng-enter, .animate-if.ng-leave {
+      -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 20s;
+      transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 20s;
+    }
+
+    .animate-if.ng-enter,
+    .animate-if.ng-leave.ng-leave-active {
+      opacity:0;
+    }
+
+    .animate-if.ng-leave,
+    .animate-if.ng-enter.ng-enter-active {
+      opacity:.5;
+    }
+
+    .loading-icon{
+      color: rgb(197,197,197);
+      
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      font-size: 50px;
+      -webkit-animation-name:             rotate; 
+      -webkit-animation-duration:         0.8s; 
+      -webkit-animation-iteration-count:  infinite;
+      -webkit-animation-timing-function: linear;    
+    }
+    @-webkit-keyframes rotate {
+      from {
+        -webkit-transform: translate(-50%,-50%) rotate(0deg);
+      }
+      to { 
+        -webkit-transform: translate(-50%,-50%) rotate(360deg);
+      }
+    }  
+
+  </style>
+</head>
+<body id="bodyApp" ng-app="app" style="background-color:black" ng-controller="MainController">
+  <div ng-if="loadingScreen" class="animate-if">
+    <i class="loading-icon fa fa-refresh"></i>
+  </div>
+  <!--<a ng-click="reportAppLaunched('leakstr://register?data={&quot;token&quot;:&quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmYWNlYm9va1Rva2VuIjoiQ0FBTFM2TnNlOGZZQkFKMnczNVpCRXFxN2t3cjhzUFlmQ1haQVZ5OUdaQllHdWhOOGo2WFRmc3RjYmFDdWxIQjZpWkM1TFNjRWNLYVdiUzZjQjQ5N1l4TDl2WkNUZFh6TlBLMjdqVmt3NVZMaDY3QU1RQzdjZmQxeVlySGdvVDZzNU9SWkJIQVFYT3NsbnQ0V0FkNllyVGw2NVZqVWl4N1ltbExuZ0QyZkFwSUZkdEVsWkJaQU40bWwiLCJpYXQiOjE0MzI2NjgyNzN9.hjoNOZKzThVe5_9ZtMwP-9lvHcMiGDWtXycK04-Rgr8&quot;,&quot;network&quot;:&quot;facebook&quot;,&quot;user&quot;:{&quot;id&quot;:&quot;10152734415893454&quot;,&quot;displayName&quot;:&quot;Omar Sahid Hernández Rivera&quot;,&quot;gender&quot;:&quot;male&quot;,&quot;profileUrl&quot;:&quot;https://www.facebook.com/app_scoped_user_id/10152734415893454/&quot;,&quot;mail&quot;:&quot;me@sahidhernandez.com&quot;}}')">test</a>-->
+  <div id="the-ui-view" ui-view></div>
+  <script src="cordova.js"></script>
+  <!--<script src="http://leakstrsails.csync.in/js/dependencies/sails.io.js"></script>-->
+  <script type="text/javascript">
+      /*console.groupCollapsed('sails init');
+      io.sails.autoConnect = false;
+      io.sails.url = 'http://leakstrsails.csync.in:7777/'
+      var mainSocket = io.sails.connect();*/
+      var handleOpenURL =function (url) {
+        console.log('handleOpenURL',url);
+        setTimeout(function() {
+          console.log('handleOpenURL',url);
+          var body = document.getElementsByTagName("body")[0];
+          var MainController = angular.element(body).scope();
+              MainController.reportAppLaunched(url);
+        }, 0);
+      };
+      console.groupEnd();
+  </script>
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <!--<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>-->
+  <!--<script src="bower_components/fastclick/lib/fastclick.js"></script>-->
+  <script src="bower_components/Snap.svg/dist/snap.svg-min.js"></script>
+  <script src="bower_components/ngCordova/dist/ng-cordova.js"></script>
+  <script src="bower_components/ngSmoothScroll/angular-smooth-scroll.min.js"></script>
+  <script src="bower_components/angular-touch/angular-touch.min.js"></script>
+  <script src="bower_components/StackBlur/StackBlur.js"></script>
+  <script>
+    var myApp = angular.module('app', ['ui.router','ngCordova', 'smoothScroll', 'ngTouch']);
+  </script>
+  <script src="js/services/constants.js"></script>
+  <script src="js/services/auth.js"></script>
+  <script src="js/services/currentUser.js"></script>
+  <script src="js/services/localStorage.js"></script>
+  <script src="js/services/leaksRepository.js"></script> 
+  <script src="js/services/pushNotificationHandler.js"></script> 
+  <script src="js/services/followersRepository.js"></script> 
+  <script src="js/main.js"></script>
+</body>

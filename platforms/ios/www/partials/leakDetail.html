@@ -1,0 +1,142 @@
+<div class="generic-window-container">
+	<div class="header">
+		<div class="left-zone" ng-click="goBack()">
+			<i class="ion-ios-arrow-left"></i>
+		</div>
+		<div class="center-zone">
+			<span class="centerContent">Leak detail</span>
+		</div>
+		<div class="right-zone">
+			<i ng-if="!selectedLeak.processed" ng-click="follow(selectedLeak.id)" class="fa fa-plus"></i>
+		</div>
+	</div>
+	<img ng-if="!selectedLeak.processed" class="theLeakImage" ng-src="{{ServerAddress+'/leak/getBlurPic/'+selectedLeak.photoBlured}}">
+	<img ng-if="selectedLeak.processed" class="theLeakImage" ng-src="{{ServerAddress+'/leak/getBlurPic/'+selectedLeak.photo}}">
+	<div class="content">
+		<p class="leak-nombre">{{selectedLeak.name}}</p>
+		<div ng-if="selectedLeak.processed" >
+			<p class="leak-contenido">{{selectedLeak.body}}</p>
+			<p>Fecha: {{selectedLeak.date | date:'MM/dd/yyyy @ h:mma'}}</p>
+		</div>
+		<p class="leak-timer">{{selectedLeak.date | countdown}}</p>
+		<p class="leak-owner">Creado por: {{selectedLeak.owner.username}}</p>
+		<!--<div class="tags">Tags: <p ng-repeat="tag in tags">{{selectedLeak.tag}}</p></div>-->
+		
+		<!--Comments
+		<div class="comment-form">
+			<textarea rows="2" cols="50" class="comment-input" ng-model="comment" type="text" placeholder="Comentario" value=""></textarea>
+			<button class="comment-send-button" ng-click="sendComment(selectedLeak.id)">Enviar</button><br>
+		</div>
+		<div class="comments-container">
+			<div ng-repeat="comment in allComments" class="comment-container">
+				<div class="comment-thumb">
+					<img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xap1/v/t1.0-1/p100x100/10393970_10153137708408454_7020134085747883602_n.jpg?oh=4526286c6d483b598761a14027c51a40&oe=559DECC9&__gda__=1439949084_97eeb0a380f1362ffdde3aef528c308d" class="avator">
+				</div>
+				<div class="comment-details">
+					<div class="comment-owner">{{comment.owner.username}}</div>
+					<div class="comment-text">{{comment.text}}</div>
+				</div>
+			</div>
+		</div>-->
+	</div>
+</div>
+<style type="text/css">
+	*:focus {
+    	outline: 0;
+	}
+	.theLeakImage{
+	  position: absolute;
+	  top: 50%;
+	  left: 50%;
+	  -webkit-transform: translate3d(-50%,-50%,0);
+	  z-index: 0;
+	  width: 100%;
+	  opacity: .8;
+	}
+	.content{
+		color: white;
+		text-align: center;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		-webkit-transform: translate3d(-50%,-50%,0);
+	}
+	.leak-nombre{
+		font-weight: 400;
+		font-size: 2em;
+	}
+	.leak-contenido{
+		font-weight: 700;
+		font-size: 3em;
+	}
+	.comment-input{
+		width: 79%;
+		min-height: 50px;
+		max-height: 50px;
+		border: none;
+		padding: 0;
+		margin: 0;
+		color: black;
+		resize: none;
+		top: 20px;
+		display: inline;
+		position: relative;
+	}
+	.comment-send-button{
+		height: 50px;
+		border:none;
+		width: 20%;
+		padding:0;
+		margin: 0;
+		background-color: #4eb96f;;
+	}
+	.header{
+		position: relative;
+		min-height:50px;
+		border-bottom-color: white;
+		border-bottom-style: solid;
+		border-bottom-width: 1px;
+		color: white;
+	}
+	.left-zone{
+		position: absolute;
+		top: 50%;
+		left: 0%;
+		-webkit-transform: translate3d(.5em,-50%,0);
+		font-size: 2em;
+	}
+	.right-zone{
+		position: absolute;
+		top: 50%;
+		right: 0%;
+		-webkit-transform: translate3d(-50%,-50%,0);
+		font-size: 2em;
+	}
+	.center-zone{
+		position: absolute;
+		font-size: 1.4em;
+		top: 50%;
+		left: 50%;
+		text-align: center;
+		-webkit-transform: translate3d(-50%,-50%,0);
+	}
+	.list-item{
+		background-color:white;
+		height: 50px;
+		border-width:1px 0 1px 0;
+		border-style: solid;
+	}
+	.redes-sociales{
+		height: 50px;
+	}
+	.user-thumbnail{
+		-webkit-border-radius: 20px;
+		height: 40px;
+	}
+	.total-center{
+		position: relative;
+		top: 50%;
+		left: 50%;
+		-webkit-transform: translate3d(-50%,-50%,0);
+	}
+</style>

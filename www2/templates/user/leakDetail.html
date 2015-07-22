@@ -1,0 +1,85 @@
+<ons-page ng-controller="DetailController">
+  <ons-toolbar>
+    <div class="center">Leak</div>
+    <div class="left"><ons-back-button>Atrás</ons-back-button></div>
+	<div class="right">
+		<ons-toolbar-button ng-click="follow()">
+	  		<ons-icon icon="ion-plus" fixed-width="false"></ons-icon>
+		</ons-toolbar-button>
+	</div>    
+  </ons-toolbar>
+	<div ng-if="selectedLeak.processed">
+		<p>Nombre: {{selectedLeak.name}}</p>
+		<p>Contenido: {{selectedLeak.body}}</p>
+	</div>
+	<!--CountDown-->
+	<div ng-if="!selectedLeak.processed">
+		<timer end-time="selectedLeak.date" language='es'>{{days}} días, {{hours}} horas, {{minutes}} minutos, {{seconds}} segundos</timer>
+	</div>
+	<p ng-repeat="tag in tags">tags: {{selectedLeak.tag}}</p>
+	<div class="plan-date">{{selectedLeak.date | date:'MM/dd/yyyy'}}</div>
+	<div class="plan-duration">{{selectedLeak.date | date:'h:mma'}}</div>
+	<!--<p>Procesado: {{selectedLeak.processed}}</p>-->
+	<p>Creado por: {{selectedLeak.owner.username}}</p>
+	<!--Comments-->
+	<input ng-model="comment" type="text" class="text-input text-input--underbar" placeholder="Comentario" value="">
+	<button class="button button--large" ng-click="sendComment()">Send Comment</button><br>
+
+    <ons-list-item modifier="chevron" class="list-item-container" ng-repeat="comment in allComments">
+      <div class="list-item-left">
+        <img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xap1/v/t1.0-1/p100x100/10393970_10153137708408454_7020134085747883602_n.jpg?oh=4526286c6d483b598761a14027c51a40&oe=559DECC9&__gda__=1439949084_97eeb0a380f1362ffdde3aef528c308d" class="avator">
+      </div>
+      <div class="list-item-right">
+        <div class="list-item-content">
+          <div class="name">{{comment.owner.username}}</div>
+          <span class="desc">{{comment.text}}</span>
+        </div>
+      </div>
+    </ons-list-item>
+    <style type="text/css">
+		.list-item-container {
+		  line-height: 1;
+		  font-size: 14px;
+		  padding: 15px 0px 15px 15px;
+		}
+
+		.list-item-left {
+		  width: 60px;
+		  margin-right: -60px;
+		  float: left;
+		}
+
+		.list-item-right {
+		  width: 100%;
+		  float: right;
+		}
+
+		.list-item-content {
+		  margin-left: 50px;
+		  margin-right: 30px;
+		}
+
+		.avator {
+		  width: 40px;
+		  height: 40px;
+		  border-radius: 3px;
+		  -webkit-border-radius: 3px;
+		}
+
+		.name {
+		  font-weight: 500;
+		  line-height: 16px;
+		  font-size: 15px;
+		  margin-bottom: 6px;
+		}
+
+		.desc {
+		  line-height: 16px;
+		}
+
+		.lucent {
+		  opacity: 0.4;
+		}
+
+    </style>
+</ons-page>

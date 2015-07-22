@@ -1,0 +1,14 @@
+{
+  "name": "famous-angular-bower",
+  "_cacheHeaders": {
+    "ETag": "W/\"3837851317\"",
+    "Last-Modified": "Fri, 07 Nov 2014 03:02:42 GMT",
+    "Content-Length": "171",
+    "Content-Type": "application/octet-stream"
+  },
+  "_release": "e-tag:W/\"3837851",
+  "main": "index.md",
+  "_source": "https://code.famo.us/famous-angular/bower/famous-angular-bower.tar.gz?version=0.5.0",
+  "_target": "*",
+  "_originalSource": "https://code.famo.us/famous-angular/bower/famous-angular-bower.tar.gz?version=0.5.0"
+}

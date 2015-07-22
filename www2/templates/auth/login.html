@@ -1,0 +1,37 @@
+
+<ons-page ng-controller="LoginController">
+  <ons-toolbar>
+    <div class="center">Login</div>
+    <div class="left"><ons-back-button>Atrás</ons-back-button></div>
+  </ons-toolbar>
+  <form name="registerForm" class="login-form" novalidate>
+    <div class="control-group">
+      <input type="text" class="text-input--underbar" placeholder="Username" name="username" ng-model="user.username" required>
+    </div>
+    <div class="control-group">
+      <input type="password" class="text-input--underbar" placeholder="Password" name="password" ng-model="user.password" required>
+    </div>
+    <br>
+    <ons-button modifier="large" class="login-button" ng-click="login()">Login</ons-button>
+    
+  </form>
+  <style>
+    .login-form {
+      text-align: center;
+      width: 80%;
+      margin: 60px auto 0;
+    }
+
+
+    .login-button {
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .forgot-password {
+      display: block;
+      margin: 8px auto 0 auto;
+      font-size: 14px;
+    }  
+  </style>      
+</ons-page>

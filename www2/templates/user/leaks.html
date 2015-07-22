@@ -1,0 +1,161 @@
+<ons-navigator animation="slide" var="app.navi">
+  <ons-page ng-controller="LeaksController">
+    <ons-toolbar>
+      <div class="left">
+        <ons-toolbar-button ng-click="logoutme()">
+          <ons-icon icon="ion-power" fixed-width="false"></ons-icon>
+        </ons-toolbar-button>
+      </div>
+      <div class="center">Leaks</div>
+      <div class="right">
+        <ons-toolbar-button ng-click="app.mainnavi.pushPage('templates/user/newLeak.html');">
+          <ons-icon icon="ion-plus" fixed-width="false"></ons-icon>
+        </ons-toolbar-button>
+      </div>
+    </ons-toolbar>
+
+    <!--<ons-button modifier="light" ng-click="app.mainnavi.pushPage('templates/user/newLeak.html');">Nuevo Leak</ons-button>-->
+    <ons-list>
+      <div class="navigation-bar">
+        <div class="navigation-bar__center">
+
+          <input type="search" class="search-input" style="width: 98%; margin: 6px auto 6px auto;" placeholder="Buscar Leak" ng-model="searchLeak">
+
+        </div>
+      </div>    
+      <ons-list-header>Followers Leaks</ons-list-header>
+      <ons-list-item ng-repeat="leak in leaksWorld | orderBy:['date','processed']:true | filter:searchLeak" modifier="chevron"  class="plan">
+             <!--<ons-row ng-click="app.mainnavi.pushPage('templates/user/leakDetail.html',leak);">
+                <ons-col width="80px" class="plan-left">
+                  <div class="plan-date">{{leak.date | date:'MM/dd/yyyy'}}</div>
+                  <div class="plan-duration">{{leak.date | date:'h:mma'}}</div>
+                </ons-col>
+
+                <ons-col width="6px" class="plan-center" ng-style="{backgroundColor:leak.processed ? '#3399ff' : '#ccc'}">
+                </ons-col>
+
+                <ons-col class="plan-right">
+                  <div class="plan-name">{{leak.name}}</div>
+
+                  <div class="plan-info">
+                    <div>
+                      <ons-icon icon="user"></ons-icon>{{leak.owner.username}}
+                    </div>
+
+                  </div>
+                </ons-col>
+              </ons-row>-->
+            <div class="leakContainer" ng-click="app.mainnavi.pushPage('templates/user/leakDetail.html',leak);">
+                <img src="http://lorempixel.com/400/200/">
+                <p class="leakTitulo">{{leak.name}}</p>
+                <p class="leakCreador">{{leak.owner.username}}</p>
+            </div>
+      </ons-list-item>  
+      <ons-list-header>Mis Leaks</ons-list-header>
+      <ons-list-item ng-repeat="leak in leaks | orderBy:'date':true" modifier="chevron"  class="plan">
+             <!--<ons-row ng-click="app.mainnavi.pushPage('templates/user/leakDetail.html',leak);">
+                <ons-col width="80px" class="plan-left">
+                  <div class="plan-date">{{leak.date | date:'MM/dd/yyyy'}}</div>
+                  <div class="plan-duration">{{leak.date | date:'h:mma'}}</div>
+                </ons-col>
+
+                <ons-col width="6px" class="plan-center" ng-style="{backgroundColor:leak.processed ? '#3399ff' : '#ccc'}">
+                </ons-col>
+
+                <ons-col class="plan-right">
+                  <div class="plan-name">{{leak.name}}</div>
+
+                  <div class="plan-info">
+                    <div>
+                      <ons-icon icon="file-text"></ons-icon>{{leak.body | characters:25}}
+                    </div>
+
+                  </div>
+                </ons-col>
+              </ons-row>-->
+      </ons-list-item>
+
+    </ons-list>  
+    <style type="text/css">
+              .leakContainer{
+                height:160px;
+                overflow:hidden;
+                position: relative;
+              }
+              .leakContainer img{
+                -webkit-filter: blur(5px);
+                width:100%;
+                position: absolute;
+                top: 0;
+                z-index: 0;
+              }
+              .leakContainer .leakTitulo{
+                position: relative;
+                z-index: 3;
+                text-align: center;
+                font-size: 32px;
+              }
+              .leakContainer .leakCreador{
+                position: relative;
+                z-index: 3;
+                text-align: left;
+                top: 42px;
+              }
+    .processed{
+      background-color: red;
+    }
+  .plan-list {
+    border-top: none;
+    background-image: none !important;
+  }
+
+  .plan {
+    line-height: 1;
+    padding: 0;
+  }
+
+  .plan-left {
+    text-align: right;
+    padding: 10px 10px 10px 0;
+  }
+
+  .plan-center {
+    background-color: #3399ff;
+    opacity: 0.5;
+  }
+
+  .plan-right {
+    padding: 10px 40px 10px 10px;
+  }
+
+  .plan-date {
+    font-size: 14px;
+    opacity: 0.8;
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+
+  .plan-duration {
+    font-size: 11px;
+    opacity: 0.4;
+  }
+
+  .plan-name {
+    font-size: 17px;
+    margin-bottom: 8px;
+  }
+
+  .plan-info {
+    opacity: 0.4;
+    font-size: 12px;
+    line-height: 1.4;
+  }  
+  .fa-file-text{
+      font-size: 1em;
+    margin-right: .5em;
+    top: -1px;
+    position: relative;
+  }
+  </style>
+  </ons-page>
+</ons-navigator>

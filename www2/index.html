@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>New Sails App</title>
+
+    <!-- Viewport mobile tag for sensible mobile support -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="js/dependencies/onsen/css/onsenui.css">  
+    <link rel="stylesheet" href="styles/onsen-css-components/onsen-css-components.css">  
+    
+    <style type="text/css">
+    input[type=text], input[type=password] {
+      display: block;
+      width: 100%;
+      margin: 0 auto;
+      outline: none;
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+    .loading-icon{
+      color: rgb(197,197,197);
+      
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      font-size: 50px;
+      -webkit-animation-name:             rotate; 
+      -webkit-animation-duration:         0.8s; 
+      -webkit-animation-iteration-count:  infinite;
+      -webkit-animation-timing-function: linear;    
+    }
+    @-webkit-keyframes rotate {
+      from {
+        -webkit-transform: translate(-50%,-50%) rotate(0deg);
+      }
+      to { 
+        -webkit-transform: translate(-50%,-50%) rotate(360deg);
+      }
+    }    
+    </style>
+
+    <!--<script src="http://leakstrsails.csync.in/js/dependencies/sails.io.js"></script>-->
+    
+    <script src="http://leakstrsails.csync.in/js/dependencies/sails.io.js"></script>
+    <script type="text/javascript">
+    console.log('mainSocket0');
+      var mainSocket;
+      
+      //io.sails.transports = ['polling'];
+      io.sails.autoConnect = false;
+      console.log('mainSocket1');
+      console.log(io.sails);
+      io.sails.url = 'http://leakstrsails.csync.in:7777/'
+      mainSocket = io.sails.connect();
+      console.log('mainSocket2');
+      console.log(mainSocket);
+      //io('http://leakstrsails.csync.in/');
+    </script>
+    <script src="js/dependencies/angular.js"></script>
+    <script src="js/dependencies/onsen/js/onsenui.js"></script>
+    <script src="js/dependencies/angular-messages.js"></script>
+    <script src="js/dependencies/angular-load/angular-load.js"></script>
+    <!--<script src="js/dependencies/angular-ui-router.js"></script>-->
+    <!--<script src="js/dependencies/sails.io.js"></script>-->
+    <script src="js/dependencies/ng-cordova.min.js"></script>
+
+    <script src="js/dependencies/momentjs/min/moment.min.js"></script>
+    <script src="js/dependencies/momentjs/min/locales.min.js"></script>
+    <script src="js/dependencies/humanize-duration/humanize-duration.js"></script>
+    <script src="js/dependencies/angular-timer/dist/angular-timer.js"></script>
+    
+    <script src="cordova.js"></script>
+    <script src="js/dependencies/ui-bootstrap-tpls-0.11.0.js"></script>
+    <script src="js/dependencies/truncate.js"></script>
+
+    <script src="js/dependencies/famous/dist/famous-global.js"></script>
+    <script src="js/dependencies/famous-angular/dist/famous-angular.js"></script>
+
+    <script src="js/app.js"></script>
+    
+    <script src="js/services/constants.js"></script>
+    <script src="js/services/auth.js"></script>
+    <script src="js/services/currentUser.js"></script>
+    <script src="js/services/localStorage.js"></script>
+    <script src="js/services/leaksRepository.js"></script> 
+    <script src="js/services/pushNotificationHandler.js"></script> 
+    <script src="js/services/followersRepository.js"></script> 
+
+
+    <script src="js/controllers/mainController.js"></script>
+    <script src="js/controllers/loginController.js"></script>
+    <script src="js/controllers/leaksController.js"></script>
+    <script src="js/controllers/navController.js"></script>
+    <script src="js/controllers/registerController.js"></script>
+    <script src="js/controllers/detailController.js"></script>
+    <script src="js/controllers/newLeakController.js"></script>
+    <script src="js/controllers/followController.js"></script>
+    <script src="js/controllers/findLeaksController.js"></script>
+    <script src="js/controllers/followerDetailController.js"></script>
+    <!--STYLES END-->
+  </head>
+
+  <body>
+  <!--main-page="templates/home.html"-->
+
+  <ons-navigator animation="slide" var="app.mainnavi" ng-controller="MainController">
+     <div ng-if="loadingScreen" style="opacity:0.5;background-color:black;width:100%;height:100%;position:absolute;z-index:100;top:0;left:0;">
+       <ons-icon class="loading-icon" icon="ion-ios-loop-strong"></ons-icon>
+     </div>
+     <ons-sliding-menu menu-page="templates/menu.html" max-slide-distance="260px" type="push" var="menu">
+
+          <ons-tabbar var="app.tabbar">
+            <ons-tab page="templates/user/leaks.html" label="Leaks" icon="ion-ios-cog" active="true"></ons-tab>
+            <ons-tab page="templates/user/follow.html" label="Friends" icon="ion-ios-person"></ons-tab>
+            <ons-tab page="templates/user/searchLeaks.html" label="Find" icon="ion-ios-search"></ons-tab>
+            <!--<ons-tab page="templates/auth/login.html" label="Login" icon="ion-chatbox-working"></ons-tab>-->
+            <!--<ons-tab page="templates/auth/register.html" label="Register" icon="ion-ios-pricetag"></ons-tab>-->
+          </ons-tabbar>   
+      </ons-sliding-menu>
+    </ons-navigator>
+  </body>
+</html>

@@ -1,0 +1,220 @@
+<div class="leaksContainer">
+	<div id="start" style="min-height:20px;"></div>
+	<!--<div scroll-to="start" style="top:0;position:fixed;width:100%;min-height:150px;z-index:10000;"></div>-->
+	<div class="leakContainer" ng-repeat="leak in leaksWorld | orderBy:'-date'" ng-click="goToLeak(leak.id)">
+		<div class="leakDetailContainer">
+			<div class="spinner"><div class="dot1"></div><div class="dot2"></div></div>
+			<img class="theLeakImage" my-src="{{ServerAddress+'/leak/getBlurPic/'+leak.photoBlured}}">
+			<div style="z-index:3;">
+				<p class="nameLeak">{{leak.name}}</p>
+				<p class="timeLeak">
+					<span style="z-index:1;position:relative;">{{leak.date | countdown}}</span>
+				</p>
+				<p class="DHMS">D H M S</p>
+				<div class="userImage">
+					<img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xap1/v/t1.0-1/p100x100/10393970_10153137708408454_7020134085747883602_n.jpg?oh=0652e8b280071dbfa4d3114af37dd888&oe=55C579C9&__gda__=1439949084_1a38f174ccb84112c90b769c0a5f2f9c">
+				</div>
+				<p class="ownerLeak">
+					{{leak.owner.username}}
+				</p>
+			</div>
+		</div>
+	</div>
+	<h2>Mis Leaks</h2>
+	<div class="leakContainer" ng-repeat="leak in misLeaks | orderBy:'-date' " ng-click="goToLeak(leak.id)">
+		<div class="leakDetailContainer">
+			<div class="spinner"><div class="dot1"></div><div class="dot2"></div></div>
+			<img class="theLeakImage" my-src="{{ServerAddress+'/leak/getBlurPic/'+leak.photoBlured}}">
+			<div style="z-index:3;">
+				<p class="nameLeak">{{leak.name}}</p>
+				<p class="timeLeak">
+					<span style="z-index:1;position:relative;">{{leak.date | countdown}}</span>
+				</p>
+				<p class="DHMS">D H M S</p>
+				<div class="userImage">
+					<img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xap1/v/t1.0-1/p100x100/10393970_10153137708408454_7020134085747883602_n.jpg?oh=0652e8b280071dbfa4d3114af37dd888&oe=55C579C9&__gda__=1439949084_1a38f174ccb84112c90b769c0a5f2f9c">
+				</div>
+				<p class="ownerLeak">
+					Tú
+				</p>
+			</div>
+		</div>
+	</div>	
+</div>
+<div style="min-height:50px;position:relative;"></div>
+<div class="container menuContainer">
+	<div class="row">
+		<div class="menuItem col-xs-4" style="color: #4eb96f;"><i class="fa fa-tint"></i></div>
+		<div ng-click="$state.go('misAmigos')" class="menuItem col-xs-4"><i class="fa fa-user"></i></div>
+		<div ng-click="$state.go('nuevoLeak')" class="menuItem col-xs-4"><i class="fa fa-pencil-square-o"></i></div>
+	</div>
+</div>
+<style type="text/css">
+	.DHMS{
+		position: absolute;
+		top: 65%;
+		left: 51%;
+		letter-spacing: 1.6em;
+		font-size: .5em;
+		-webkit-transform: translate3d(-50%,-50%,0);
+		text-align: center;
+		width: 100%;
+	}
+	.leakDetailContainer{
+		position: relative;
+		min-height: 200px;
+		max-height: 200px;
+		-webkit-box-shadow: inset 0px 3px 4px 2px rgba(0,0,0,0.75);
+		-moz-box-shadow: inset 0px 3px 4px 2px rgba(0,0,0,0.75);
+		box-shadow: inset 0px 3px 4px 2px rgba(0,0,0,0.75);
+		overflow: hidden;
+	}
+	.leakDetailContainer .theLeakImage{
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 0;
+		width: 100%;
+	}
+	.menuContainer{
+		background-color:white;
+		position:fixed;
+		bottom:0;
+		min-height:50px;
+		width:100%;
+		color:#999999;
+		text-align: center;
+	}
+	.menuItem{
+		position: relative;
+		font-size: 30px;
+		top: 10px;
+	}
+	.leakDetailContainer2::after{
+		content: "";
+		background-image: url('http://lorempixel.com/400/200/');
+		-webkit-filter: blur(5px);
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		position: absolute;
+		z-index: -1;
+	}
+	.leaksContainer{
+		color:white;
+		text-align: center;
+		top: 0;
+		text-shadow: 2px 1px 6px rgba(0, 0, 0, 1);
+		overflow-y: scroll; 
+		-webkit-overflow-scrolling: touch;
+	}
+	.leakContainer{
+		min-height: 200px;
+		background-color: rgba(255,255,255,.8);
+	}
+	.leakContainer .nameLeak{
+		font-size: 1.6em;
+		position: absolute;
+		width: 100%;
+		top:1em;
+	}
+	.leakContainer .timeLeak{
+		font-size: 1.6em;
+		position: absolute;
+		width: 50%;
+		margin: auto;
+		-webkit-border-radius:22px;
+		top: 50%;
+		left: 50%;
+		-webkit-transform: translate3d(-50%,-50%,0);
+		background-color: rgba(255,255,255,0.3);
+		overflow: hidden;
+	}
+	.leakContainer .ownerLeak{
+		font-size: 1em;
+		position: absolute;
+		bottom: 2px;
+		left: 55px;
+	}
+	.leakContainer .addLeak{
+		font-size: 1.7em;
+		position: absolute;
+		bottom: -1px;
+		color: #4eb96f;
+		right: 10px;
+		background-color: rgba(255,255,255,.8);
+		padding: 1px 26px 0px 3px;
+		-webkit-border-radius: 20px;
+	}
+	.theSnapContainer{
+		width:200px;
+		height:50px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		z-index: 0;
+		-webkit-transform: translate3d(-50%,-50%,0);
+	}
+	.userImage{
+		width: 40px;
+		bottom: 3px;
+		left: 10px;
+		-webkit-border-radius:20px;
+		overflow: hidden;
+		position: absolute;
+		display: none;
+	}
+	.userImage img{
+		width: 100%;
+	}
+
+	.spinner {
+	  margin: 65px auto;
+	  width: 60px;
+	  height: 60px;
+	  position: relative;
+	  text-align: center;
+	  
+	  -webkit-animation: rotateSpinner 2.0s infinite linear;
+	  animation: rotateSpinner 2.0s infinite linear;
+	}
+
+	.dot1, .dot2 {
+	  width: 60%;
+	  height: 60%;
+	  display: inline-block;
+	  position: absolute;
+	  top: 0;
+	  background-color: #4eb96f;
+	  border-radius: 100%;
+	  
+	  -webkit-animation: bounce 2.0s infinite ease-in-out;
+	  animation: bounce 2.0s infinite ease-in-out;
+	}
+
+	.dot2 {
+	  top: auto;
+	  bottom: 0px;
+	  -webkit-animation-delay: -1.0s;
+	  animation-delay: -1.0s;
+	}
+
+	@-webkit-keyframes rotateSpinner { 100% { -webkit-transform: rotate(360deg) }}
+	@keyframes rotateSpinner { 100% { transform: rotate(360deg); -webkit-transform: rotate(360deg) }}
+
+	@-webkit-keyframes bounce {
+	  0%, 100% { -webkit-transform: scale(0.0) }
+	  50% { -webkit-transform: scale(1.0) }
+	}
+
+	@keyframes bounce {
+	  0%, 100% { 
+	    transform: scale(0.0);
+	    -webkit-transform: scale(0.0);
+	  } 50% { 
+	    transform: scale(1.0);
+	    -webkit-transform: scale(1.0);
+	  }
+	}
+</style>

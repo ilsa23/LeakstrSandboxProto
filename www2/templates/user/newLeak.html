@@ -1,0 +1,47 @@
+
+<ons-page ng-controller="NewLeakController">
+  <ons-toolbar>
+    <div class="center">Leaks</div>
+    <div class="left"><ons-back-button>Atrás</ons-back-button></div>
+  </ons-toolbar>
+  <form name="newLeakForm" class="login-form" novalidate>
+    <div class="control-group">
+      <input type="text" class="text-input--underbar" placeholder="Nombre" name="nombre" ng-model="leak.name" required>
+    </div>
+    <div class="control-group">
+      <input type="text" class="text-input--underbar" placeholder="Texto" name="txto" ng-model="leak.body" required>
+    </div>
+    <br>
+    <ons-button modifier="large" class="login-button" ng-click="miDatePicker()">Fecha {{leak.date | date:'MM/dd/yyyy @ h:mma'}}</ons-button>
+    <br>
+    <ons-button modifier="large" class="login-button" ng-click="createLeak()">Leak!</ons-button>
+    
+  </form>
+  <style>
+    .login-form {
+      text-align: center;
+      width: 80%;
+      margin: 60px auto 0;
+    }
+
+    input[type=text], input[type=password] {
+      display: block;
+      width: 100%;
+      margin: 0 auto;
+      outline: none;
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+
+    .login-button {
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .forgot-password {
+      display: block;
+      margin: 8px auto 0 auto;
+      font-size: 14px;
+    }  
+  </style>      
+</ons-page>

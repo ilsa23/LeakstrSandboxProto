@@ -1,0 +1,13 @@
+<ons-navigator ng-controller="MainController" animation="slide" var="app.navi">
+  <ons-page>
+    <ons-toolbar>
+      <div class="center">Title</div>
+    </ons-toolbar>
+
+    <p style="text-align: center">
+      <ons-button modifier="light" ng-click="app.navi.pushPage('templates/auth/login.html');">Login</ons-button>
+      <ons-button modifier="light" ng-click="app.navi.pushPage('templates/auth/register.html');">Regístrate</ons-button>
+      <ons-button modifier="light" ng-click="app.navi.pushPage('templates/user/leaks.html');">Mensajes</ons-button>
+    </p>
+  </ons-page>
+</ons-navigator>
